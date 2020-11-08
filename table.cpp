@@ -270,6 +270,7 @@ void Table::displayAll(){
 			displayTopic(hashTable[i]);
 		}
 	}
+	cout << "---" <<  endl;
 }
 
 
@@ -305,13 +306,7 @@ void Table::loadFile(){
 		delete [] addReview;
 
 		addRating = 0;
-		//infile.ignore();
 	}
-}
-
-
-
-void writeFile(char* outFile){
 }
 
 

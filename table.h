@@ -42,12 +42,11 @@ public:
 
 //Data read and write
 	void loadFile();
-	void writeFile(char* outFile);
 
 private:
 	Node** hashTable;
 
-	const int INIT_CAP = 313;
+	const int INIT_CAP = 397;
 	int capacity;
 	int size;
 
