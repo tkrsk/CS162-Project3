@@ -90,5 +90,9 @@ void Node::bookInit(char* addTopic, char* addWebsite, char* addSummary, char* ad
 
 //Print
 void Node::print(){
-	cout << book.getTopic() << ": " << book.getWebsite() << ": " << book.getSummary() << ": " << book.getReview() << ": " << book.getRating() << endl;
+	cout << "Topic: " <<  book.getTopic() << endl;
+	cout << "Wesbite: " << book.getWebsite() << endl;
+	cout << "Summary: " << book.getSummary() << endl;
+	cout << "Review: " << book.getReview() << endl;
+	cout << "Rating: " << book.getRating() << endl;
 }

@@ -267,7 +267,6 @@ void Table::displayTopic(Node* start){
 void Table::displayAll(){
 	for(int i = 0; i < capacity; i++){
 		if(hashTable[i] != nullptr){
-			cout << "Hash value: " << i << endl;
 			displayTopic(hashTable[i]);
 		}
 	}
