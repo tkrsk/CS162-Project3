@@ -31,7 +31,9 @@ public:
 	
 //Mutators
 	void setNext(Node* parm);
-		
+	void setReview(char* addReview);
+	void setRating(int addRating);
+
 	void bookInit(char* addTopic, char* addWebsite, char* addSummary, char* addReview, int addRating);
 
 //Print

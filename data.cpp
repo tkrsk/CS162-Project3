@@ -22,6 +22,7 @@ Data::Data(){
 
 //Destructor
 Data::~Data(){
+	clearData();
 }
 
 
@@ -86,6 +87,17 @@ void Data::setReview(char* addReview){
 
 
 
+void Data::newReview(char* addReview){
+	if(review != nullptr){
+		delete [] review;
+		review = nullptr;
+	}
+	review = new char[strlen(addReview) + 1];
+	strcpy(review, addReview);
+}
+
+
+
 void Data::setRating(int addRating){
 	rating = addRating;
 }
@@ -96,18 +108,22 @@ void Data::setRating(int addRating){
 void Data::clearData(){
 	if(topic != nullptr){
 		delete [] topic;
+		topic = nullptr;
 	}
 
 	if(website != nullptr){
 		delete [] website;
+		website = nullptr;
 	}
 
 	if(summary != nullptr){
 		delete [] summary;
+		summary = nullptr;
 	}
 
 	if(review != nullptr){
 		delete [] review;
+		review = nullptr;
 	}
 
 	rating = 0;

@@ -26,7 +26,59 @@ AppMgr::~AppMgr(){
 
 //App Management function
 void AppMgr::start(){
-	retrieve();
+
+	int command;
+
+	cout << "(0) To Exit.\n(1) Add new website.\n(2) Retrieve all websites from a certain topic.\n(3) Edit the reviews and rating on a certain website." << endl;
+	cout << "(4) Remove all 1-star reviewed websites.\n(5) Show all websites under a certain topic.\n(6) Show all websites." << endl;
+	cout << "What would you like to do?" << endl;
+	cin >> command;
+	while (!cin.good()){ //Checks for valid integer input
+    	cin.clear();
+	    cin.ignore();
+		cout << "Please enter a valid number!" << endl;
+		cin >> command;
+	}
+	cin.ignore();
+
+	while(command > 0 && command <= 6){
+		while (!cin.good()){ //Checks for valid integer input
+    		cin.clear();
+	    	cin.ignore();
+			cout << "Please enter a valid number!" << endl;
+			cin >> command;
+		}
+		if(command == 1){
+			add();
+		}
+
+		else if(command == 2){
+			retrieve();
+		}
+
+		else if(command == 3){
+			edit();
+		}
+
+		else if(command == 4){
+			remove();
+		}
+
+		else if(command == 5){
+			displayTopic();
+		}
+		
+		else if(command == 6){
+			displayAll();
+		}
+		
+		cout << "(0) To Exit.\n(1) Add new website.\n(2) Retrieve all websites from a certain topic.\n(3) Edit the reviews and rating on a certain website." << endl;
+		cout << "(4) Remove all 1-star reviewed websites.\n(5) Show all websites under a certain topic.\n(6) Show all websites." << endl;
+		cout << "What would you like to do?" << endl;
+		cin >> command;
+		cin.ignore();
+	}
+	cout << "Good Bye!" << endl;
 }
 
 
@@ -64,6 +116,64 @@ void AppMgr::retrieve(){
 		delete [] foundList[i];
 	}
 	if(foundList != nullptr) delete [] foundList;
+}
+
+
+
+void AppMgr::edit(){
+	cout << "Please enter the topic you would like to edit a website for: " << endl;
+	
+	char* search = strbuild();
+
+	while(strlen(search) < 1){
+		cout << "You entered a blank item, try again: " << endl;
+		search = strbuild();
+	}
+	
+	bool check = resources->edit(search);
+	
+	if(check == false){
+		cout << "Website was not found!" << endl;
+	}
+
+	delete [] search;
+	search = nullptr;
+}
+
+
+
+void AppMgr::remove(){
+	resources->removeStar();
+
+	cout << "Removed all 1-star reviewed websites!" << endl;
+}
+
+
+
+void AppMgr::displayTopic(){
+	cout << "Please enter the topic you would like to: " << endl;
+	char* search = strbuild();
+
+	while(strlen(search) < 1){
+		cout << "You entered a blank item, try again: " << endl;
+		search = strbuild();
+	}
+
+	bool check = resources->displayTopic(search);
+
+	if(check == false){
+		cout << "Topic was not found!" << endl;
+	}
+
+	delete [] search;
+	search = nullptr;
+
+}
+
+
+
+void AppMgr::displayAll(){
+	resources->displayAll();
 }
 
 

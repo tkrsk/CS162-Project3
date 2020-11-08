@@ -31,13 +31,13 @@ public:
 	bool retrieve(char* keyword, char**& sites, int& found);
 
 //Editor functions
-	void edit();
+	bool edit(char* search);
 
 //Remove 1star function
 	void removeStar();
 
 //Public display Functions
-	void displayTopic(char* search);
+	bool displayTopic(char* search);
 	void displayAll();
 
 //Data read and write
@@ -67,6 +67,8 @@ private:
 //Private retrieve function
 	void retrieve(char* keyword, char** &sites, int& found, Node* curr);
 
+//Private Remove 1 Star function
+	void removeStar(Node* start);
 
 //Go-to string builder functions
 	char* strbuild();

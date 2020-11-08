@@ -30,6 +30,7 @@ public:
 	void setWebsite(char* addWebsite);
 	void setSummary(char* addSummary);
 	void setReview(char* addReview);
+	void newReview(char* addReview);
 	void setRating(int addRating);
 
 //Wipe data function

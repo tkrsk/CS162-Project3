@@ -62,6 +62,18 @@ void Node::setNext(Node* parm){
 
 
 
+void Node::setReview(char* addReview){
+	book.newReview(addReview);
+}
+
+
+
+void Node::setRating(int addRating){
+	book.setRating(addRating);
+}
+
+
+
 void Node::bookInit(char* addTopic, char* addWebsite, char* addSummary, char* addReview, int addRating){
 	book.setTopic(addTopic);
 	

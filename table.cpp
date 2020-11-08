@@ -147,25 +147,111 @@ void Table::retrieve(char* keyword, char**& sites, int& found, Node* curr){
 
 
 //Editor function
-void Table::edit(){
+bool Table::edit(char* search){
+	int index = hash(search);
+	bool found = false;
+
+	if(hashTable[index] != nullptr){
+		Node* curr = hashTable[index];
+		
+		cout << "Please enter the website for the topic you would like to edit: " << endl;
+		
+		char* editSite = strbuild();
+		
+		while(curr != nullptr){
+			if(strcmp(curr->getWebsite(), editSite) == 0){
+				cout << "Please enter a new review for the website: " << endl;
+				char* newReview = strbuild();
+
+				cout << "Please enter a new rating for the website: " << endl;
+				int newRating = 0;
+				cin >> newRating;
+				while (!cin.good()){ //Checks for valid integer input
+    				cin.clear();
+	    			cin.ignore();
+					cout << "Please enter a valid number!" << endl;
+					cin >> newRating;
+	}
+				cin.ignore();
+
+				curr->setReview(newReview);
+				curr->setRating(newRating);
+
+				found = true;
+
+				delete [] newReview;
+			}
+			curr = curr->getNext();
+		}
+		delete [] editSite;
+	}
+	return found;
 }
 
 
 
-//Remove 1star function
+//Remove 1star functions
 void Table::removeStar(){
+	for(int i = 0; i < capacity; i++){
+		Node* curr = nullptr;
+		
+		if(hashTable[i] != nullptr){
+			curr = hashTable[i];
+	
+			Node* temp = curr->getNext();
+			
+			while(temp != nullptr){
+				if(curr->getRating() == 1){
+					delete curr;
+					
+					hashTable[i] = temp;
+					
+					curr = hashTable[i];
+					
+					temp = curr->getNext();
+				}
+				else if(temp->getRating() == 1){
+					curr->setNext(temp->getNext());
+					
+					delete temp;
+					
+					temp = curr->getNext();
+				}
+				else{
+					curr = curr->getNext();
+					
+					temp = temp->getNext();
+				}
+			}
+			if(hashTable[i]->getRating() == 1){
+				if(hashTable[i]->getNext() != nullptr){
+					Node* temp = hashTable[i]->getNext();
+					
+					delete hashTable[i];
+					
+					hashTable[i] = temp;
+				}
+				else{
+					delete hashTable[i];
+					
+					hashTable[i] = nullptr;
+				}
+			}
+		}
+	}
 }
 
 
 
 //Display functions
-void Table::displayTopic(char* search){
+bool Table::displayTopic(char* search){
 	int index = hash(search);
 	if(hashTable[index] != nullptr){
 		displayTopic(hashTable[index]);
+		return true;
 	}
 	else{
-		cout << "Unable to find topic!" << endl;
+		return false;
 	}
 }
 
