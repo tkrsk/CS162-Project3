@@ -1,10 +1,3 @@
-//Tak. Masagatani
-//CS260
-//Fall 2020
-//Project 3
-//cpp file for node module
-//node.cpp
-
 #include "node.h"
 
 using namespace std;

@@ -1,10 +1,3 @@
-//Taka Masagatani
-//CS260
-//Fall 2020
-//Project 3
-//Header file for node module
-//node.h
-
 #include <iostream>
 #include <cstring>
 

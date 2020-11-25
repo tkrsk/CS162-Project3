@@ -1,10 +1,3 @@
-//Taka Masagatani
-//CS260
-//Fall 2020
-//Project 3
-//cpp file for data module
-//data.cpp
-
 #include "data.h"
 
 using namespace std;

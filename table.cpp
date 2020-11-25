@@ -1,10 +1,3 @@
-//Taka Masagatani
-//CS260
-//Fall 2020
-//Project 3
-//cpp file for table module
-//table.cpp
-
 #include "table.h"
 
 using namespace std;
